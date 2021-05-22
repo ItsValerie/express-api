@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Manufacturer.init({
     name: DataTypes.STRING,
-    quantity: DataTypes.INTEGER,
-    realease_date: DataTypes.DATE
+    location: DataTypes.TEXT,
+    release_date: DataTypes.DATEONLY
   }, {
     sequelize,
     modelName: 'Manufacturer',

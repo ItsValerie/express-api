@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Phone.belongsTo(models.Manufacturer)
       // define association here
     }
   };
   Phone.init({
     name: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
-    release_date: DataTypes.DATE
+    release_date: DataTypes.DATEONLY
   }, {
     sequelize,
     modelName: 'Phone',

@@ -9,13 +9,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING,
+        unique: true,
+        validate: { max: 100}
       },
-      quantity: {
-        type: Sequelize.INTEGER
-      },
-      realease_date: {
-        type: Sequelize.DATE
+      location: {
+        type: Sequelize.TEXT,
+        validate: { max: 500}
       },
       createdAt: {
         allowNull: false,
