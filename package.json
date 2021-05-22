@@ -13,6 +13,8 @@
   "author": "VKolling",
   "license": "ISC",
   "dependencies": {
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
     "sequelize": "^6.6.2"
   }
 }
