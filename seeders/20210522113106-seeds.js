@@ -17,3 +17,20 @@ module.exports = {
     }])
   }
 };
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert('Manufacturers', [{
+      name: 'Apple',
+      location: 'San Fancisco',
+      createdAt: new Date(),
+      updatedAt: new Date()
+     }], {});
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Manufacturers', [{
+      name: 'Apple'
+    }])
+  }
+};

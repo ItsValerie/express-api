@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
   Manufacturer.init({
     name: DataTypes.STRING,
     location: DataTypes.TEXT,
-    release_date: DataTypes.DATEONLY
   }, {
     sequelize,
     modelName: 'Manufacturer',
