@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -68,24 +70,24 @@ app.get('/manufacturers/:id', function(req, res) {
 
 
 // TEST DELETE manufacturers
-// app.delete('manufacturers/:id', function(req, res) {
-//     Manufacturer.findOne({
-//       where: {
-//       id: req.params.id}
-//     })
-//       .then(manufacturer => {
-//         if (!manufacturer) {
-//           return res.status(400).send({
-//             message: 'Manufacturer Not Found',
-//           });
-//         }
-//         return manufacturer
-//           .destroy()
-//           .then(() => res.status(204).send())
-//           .catch((error) => res.status(400).send(error));
-//       })
-//       .catch((error) => res.status(400).send(error));
-//   });
+app.delete('manufacturers/:id', function(req, res) {
+    Manufacturer.findOne({
+      where: {
+      id: req.params.id}
+    })
+      .then(manufacturer => {
+        if (!manufacturer) {
+          return res.status(400).send({
+            message: 'Manufacturer Not Found',
+          });
+        }
+        return manufacturer
+          .destroy()
+          .then(() => res.status(204).send())
+          .catch((error) => res.status(400).send(error));
+      })
+      .catch((error) => res.status(400).send(error));
+  });
 
 // PUT manufacturers
 // app.patch('manufacturers/:id', jsonParser, function(req, res) {
