@@ -56,6 +56,21 @@ exports.getManufacturer = async (req, res) => {
   return res.send(manufacturer);
 };
 
+exports.getManufacturers = async (req, res) => {
+
+  const manufacturers = await Manufacturer.findAll({
+  });
+
+  if (!manufacturers) {
+    return res.status(400).send({
+      message: `No manufacturers in database yet`,
+    });
+  }
+
+  return res.send(manufacturers);
+};
+
+
 exports.deleteManufacturer = async (req, res) => {
   const { id } = req.params;
   if (!id) {
@@ -79,6 +94,41 @@ exports.deleteManufacturer = async (req, res) => {
     await manufacturer.destroy();
     return res.send({
       message: `Manufacturer ${id} has been deleted!`,
+    });
+  } catch (err) {
+    return res.status(500).send({
+      message: `Error: ${err.message}`,
+    });
+  }
+};
+
+exports.updateManufacturer = async (req, res) => {
+  const { name, location } = req.body;
+  const { id } = req.params;
+
+  const manufacturer = await Manufacturer.findOne({
+    where: {
+      id,
+    },
+  });
+
+  if (!manufacturer) {
+    return res.status(400).send({
+      message: `No manufacturer found with the id ${id}`,
+    });
+  }
+
+  try {
+    if (name) {
+      manufacturer.name = name;
+    }
+    if (location) {
+      manufacturer.location = location;
+    }
+
+    manufacturer.save();
+    return res.send({
+      message: `Manufacturer ${id} has been updated!`,
     });
   } catch (err) {
     return res.status(500).send({
