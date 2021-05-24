@@ -20,13 +20,13 @@ exports.registerUser = async (req, res) => {
       message: 'A user with this email already exists!',
     });
   }
-  const hash = await bcrypt.hash(password, 10);
+  const hashed_password = await bcrypt.hash(password, 10);
 
   try {
     let newUser = await User.create({
       name: name,
       email: email,
-      password: hash,
+      password: hashed_password,
     });
     return res.send(newUser);
   } catch (err) {
@@ -34,4 +34,36 @@ exports.registerUser = async (req, res) => {
       message: `Error: ${err.message}`,
     });
   }
+};
+
+exports.loginUser = async (req, res) => {
+
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    res.status(400).send({message: `Missing ${!email ? "email" : 'password'}!`})
+  }
+
+try {
+  const user = await User.findOne({
+    where: {
+      email,
+    },
+  });
+
+  if(user) {
+    const validPass = await bcrypt.compare(password, user.password);
+      if(validPass) {
+        res.status(200).send({message: 'Successfully logged in'});
+      } else {
+        res.status(400).send({message: 'Wrong password'});
+            }
+        } else {
+            res.status(404).send({message: 'User not found'});
+        }
+    } catch(err) {
+      return res.status(400).send({
+      message: `Error: ${err.message}`,
+      });
+    }
 };
