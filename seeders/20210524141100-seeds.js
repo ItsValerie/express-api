@@ -1,5 +1,4 @@
 'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Users', [{
@@ -10,14 +9,12 @@ module.exports = {
       updatedAt: new Date()
      }], {});
   },
-
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('Users', [{
       email :'mailatvalerie@gmail.com'
     }])
   }
 };
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Manufacturers', [{
@@ -27,14 +24,12 @@ module.exports = {
       updatedAt: new Date()
      }], {});
   },
-
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('Manufacturers', [{
       name: 'Apple'
     }])
   }
 };
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Phones', [{
@@ -46,7 +41,6 @@ module.exports = {
       manufacturer_id: 1
      }], {});
   },
-
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('Phones', [{
       name: 'IPhone 12',

@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const phone = require('../controllers/phone.controller');
 
-// router.get('/phone/:id', phone.getPhone);
-// router.post('/phone/create/:manufacurerId', phone.createPhone);
-
+router.get('/phone/:id', phone.getPhone);
+router.post('/phone/create/:manufacturer_id', phone.createPhone);
+router.put('/phone/:id', phone.updatePhone)
 
 module.exports = router;
 

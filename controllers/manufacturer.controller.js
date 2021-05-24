@@ -92,15 +92,15 @@ exports.getManufacturers = async (req, res) => {
   // return res.send(phones);
 // };
 
-exports.getManufacturerPhones = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const phones = await Phone.findAll({ where: { manufacturerId: id } });
-  } catch (err) {
-    console.log(err);
-  }
-  console.log(phones);
-};
+// exports.getManufacturerPhones = async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const phones = await Phone.findAll({ where: { manufacturerId: id } });
+//   } catch (err) {
+//     console.log(err);
+//   }
+//   console.log(phones);
+// };
 
 
 exports.deleteManufacturer = async (req, res) => {

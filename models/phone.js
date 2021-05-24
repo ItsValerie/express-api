@@ -10,21 +10,20 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      // define association here
       Phone.belongsTo(models.Manufacturer, {
         foreignKey: 'manufacturer_id'
       });
-      // define association here
-    }
+    };
   };
   Phone.init({
+    manufacturer_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
-    release_date: DataTypes.DATEONLY,
-    manufacturer_id: DataTypes.INTEGER
+    release_date: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Phone',
   });
   return Phone;
 };
-
