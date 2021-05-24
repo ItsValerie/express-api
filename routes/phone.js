@@ -4,7 +4,8 @@ const phone = require('../controllers/phone.controller');
 
 router.get('/phone/:id', phone.getPhone);
 router.post('/phone/create/:manufacturer_id', phone.createPhone);
-router.put('/phone/:id', phone.updatePhone)
+router.put('/phone/:id', phone.updatePhone);
+router.delete('/phone/:id', phone.deletePhone);
 
 module.exports = router;
 

@@ -93,3 +93,34 @@ exports.updatePhone = async (req, res) => {
   }
 };
 
+exports.deletePhone = async (req, res) => {
+  const { id } = req.params;
+  if (!id) {
+    return res.status(400).send({
+      message: 'Please provide an id for the phone you are trying to delete!',
+    });
+  }
+
+  const phone = await Phone.findOne({
+    where: {
+      id,
+    },
+  });
+
+  if (!phone) {
+    return res.status(400).send({
+      message: `No phone found with the id ${id}`,
+    });
+  }
+  try {
+    await phone.destroy();
+    return res.send({
+      message: `Phone ${id} has been deleted!`,
+    });
+  } catch (err) {
+    return res.status(500).send({
+      message: `Error: ${err.message}`,
+    });
+  }
+};
+
