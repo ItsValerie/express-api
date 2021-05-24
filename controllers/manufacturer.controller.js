@@ -1,5 +1,5 @@
 const Manufacturer = require('../models').Manufacturer;
-
+const Phone = require('../models').Phone;
 
 // const db = require('../models');
 // const User = db.rest.models.user;
@@ -68,6 +68,38 @@ exports.getManufacturers = async (req, res) => {
   }
 
   return res.send(manufacturers);
+};
+
+// exports.getManufacturerPhones = async (req, res) => {
+
+//   const { id } = req.params;
+//   const manufacturer = await Manufacturer.findOne({
+//     where: {
+//       id,
+//     },
+//   });
+
+//   const phones = await Phone.findAll({
+//     where: {manufacturer: manufacturer}
+//   });
+// console.log(phones)
+  // if (!phones) {
+  //   return res.status(400).send({
+  //     message: `No phones found for manufacturer ${id}`,
+  //   });
+  // }
+
+  // return res.send(phones);
+// };
+
+exports.getManufacturerPhones = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const phones = await Phone.findAll({ where: { manufacturerId: id } });
+  } catch (err) {
+    console.log(err);
+  }
+  console.log(phones);
 };
 
 

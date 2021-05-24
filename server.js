@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json()
 const db = require('./models');
 const manufacturersRouter = require('./routes/manufacturer');
+const phonesRouter = require('./routes/phone');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -16,3 +17,4 @@ app.listen(3000, function() {
 
 // Endpoints
 app.use('/', manufacturersRouter);
+app.use('/', phonesRouter);

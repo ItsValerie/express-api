@@ -34,3 +34,22 @@ module.exports = {
     }])
   }
 };
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert('Phones', [{
+      name: 'IPhone 12',
+      quantity: 200,
+      release_date: "2016-06-21",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      manufacturer_id: 1
+     }], {});
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Phones', [{
+      name: 'IPhone 12',
+    }])
+  }
+};
