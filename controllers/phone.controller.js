@@ -18,7 +18,6 @@ exports.getPhone = async (req, res) => {
   return res.send(phone);
 };
 
-
 exports.createPhone = async (req, res) => {
   const {manufacturer_id} = req.params
   const { name, quantity, release_date } = req.body;
@@ -123,4 +122,3 @@ exports.deletePhone = async (req, res) => {
     });
   }
 };
-
