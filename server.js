@@ -4,17 +4,21 @@ const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json()
 const db = require('./models');
-const manufacturersRouter = require('./routes/manufacturer');
-const phonesRouter = require('./routes/phone');
+const manufacturerRouter = require('./routes/manufacturer');
+const phoneRouter = require('./routes/phone');
+const userRouter = require('./routes/user');
 
+
+// Middleware setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// create server
+// Endpoints
+app.use('/', manufacturerRouter);
+app.use('/', phoneRouter);
+app.use('/', userRouter);
+
+// Create server
 app.listen(3000, function() {
   db.sequelize.sync();
 });
-
-// Endpoints
-app.use('/', manufacturersRouter);
-app.use('/', phonesRouter);
