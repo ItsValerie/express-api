@@ -59,7 +59,7 @@ try {
         res.status(400).send({message: 'Wrong password'});
             }
         } else {
-            res.status(404).send({message: 'User not found'});
+          res.status(404).send({message: 'User not found'});
         }
     } catch(err) {
       return res.status(400).send({

@@ -1,4 +1,4 @@
-// import 'dotenv/config';
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -19,6 +19,6 @@ app.use('/', phoneRouter);
 app.use('/', userRouter);
 
 // Create server
-app.listen(3000, function() {
+app.listen(process.env.PG_PORT, function() {
   db.sequelize.sync();
 });
