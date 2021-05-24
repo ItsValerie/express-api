@@ -20,13 +20,13 @@ exports.registerUser = async (req, res) => {
       message: 'A user with this email already exists!',
     });
   }
-  const hashed_password = await bcrypt.hash(password, 10);
+  const hash = await bcrypt.hash(password, 10);
 
   try {
     let newUser = await User.create({
-      name,
-      email,
-      hashed_password,
+      name: name,
+      email: email,
+      password: hash,
     });
     return res.send(newUser);
   } catch (err) {

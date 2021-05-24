@@ -9,7 +9,7 @@ const phoneRouter = require('./routes/phone');
 const userRouter = require('./routes/user');
 
 
-// Middleware setup
+// Middleware setup to POST data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
