@@ -5,9 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Manufacturer extends Model {
     static associate(models) {
-      Manufacturer.hasMany(models.Phone,{onDelete: 'cascade', hooks:true}, {
+      Manufacturer.hasMany(models.Phone, {
         foreignKey: 'manufacturer_id',
-        as: 'phones'
+        as: 'phones',
+        onDelete: 'cascade',
+        hooks: true
       });
     };
   };
