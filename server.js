@@ -20,6 +20,11 @@ app.use('/api/v1/', manufacturerRouter);
 app.use('/api/v1/', phoneRouter);
 app.use('/', userRouter);
 
+// 404 Error Handling
+app.use((req, res) => {
+  res.status(404).send('404: Page not found');
+});
+
 // Create server
 app.listen(process.env.PG_PORT, function() {
   db.sequelize.sync();
