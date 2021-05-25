@@ -4,14 +4,16 @@ const app = express();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json()
 const db = require('./models');
+const passport = require('passport');
 const manufacturerRouter = require('./routes/manufacturer');
 const phoneRouter = require('./routes/phone');
 const userRouter = require('./routes/user');
 
-
-// Middleware setup to POST data
+// Middleware setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(passport.initialize());
+require('./config/passport-config')(passport);
 
 // Endpoints
 app.use('/', manufacturerRouter);
