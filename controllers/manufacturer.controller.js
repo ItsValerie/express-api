@@ -137,14 +137,7 @@ exports.updateManufacturer = async (req, res) => {
   }
 
   try {
-    if (name) {
-      manufacturer.name = name;
-    }
-    if (location) {
-      manufacturer.location = location;
-    }
-
-    manufacturer.save();
+    manufacturer.update({name: name}, {location: location});
     return res.send({
       message: `Manufacturer ${id} has been updated!`,
     });
