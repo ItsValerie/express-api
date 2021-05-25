@@ -9,7 +9,7 @@ const manufacturerRouter = require('./routes/manufacturer');
 const phoneRouter = require('./routes/phone');
 const userRouter = require('./routes/user');
 
-// Middleware setup
+// Middleware Setup
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
@@ -25,7 +25,7 @@ app.use((req, res) => {
   res.status(404).send('404: Page not found');
 });
 
-// Create server
+// Server
 app.listen(process.env.PG_PORT, function() {
   db.sequelize.sync();
 });
