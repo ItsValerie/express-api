@@ -34,7 +34,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Phones', [{
       name: 'IPhone 12',
-      quantity: 200,
+      quantity: 20000,
       release_date: "2016-06-21",
       createdAt: new Date(),
       updatedAt: new Date(),
