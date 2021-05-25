@@ -5,9 +5,9 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json()
 const db = require('./models');
 const passport = require('passport');
-const manufacturerRouter = require('./routes/manufacturer');
-const phoneRouter = require('./routes/phone');
-const userRouter = require('./routes/user');
+const manufacturerRouter = require('./routes/manufacturers');
+const phoneRouter = require('./routes/phones');
+const userRouter = require('./routes/users');
 
 // Middleware Setup
 app.use(express.urlencoded({ extended: true }));
