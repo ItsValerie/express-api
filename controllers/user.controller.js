@@ -1,7 +1,8 @@
 const User = require('../models').User;
 const bcrypt = require('bcryptjs');
-// const passport = require('passport');
-// const jwt = require('jsonwebtoken');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 exports.registerUser = async (req, res) => {
   const { email, name, password } = req.body;
@@ -56,7 +57,15 @@ try {
   if(user) {
     const validPass = await bcrypt.compare(password, user.password);
       if(validPass) {
-        res.status(200).send({message: 'Successfully logged in'});
+        const payload = {email: email}
+        const secret = process.env.SECRET
+        jwt.sign(payload, secret, { expiresIn: 36000},
+          (err, token) => {
+            if (err) {
+              res.status(500).send({message: `Error signing token: ${err}`});
+            }
+            res.status(200).send({success: true, token: `Bearer ${token}`, message: "Successfully signed in"});
+          });
       } else {
         res.status(400).send({message: 'Wrong password'});
             }
