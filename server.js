@@ -16,8 +16,8 @@ app.use(passport.initialize());
 require('./config/passport-config')(passport);
 
 // Endpoints
-app.use('/', manufacturerRouter);
-app.use('/', phoneRouter);
+app.use('/api/v1/', manufacturerRouter);
+app.use('/api/v1/', phoneRouter);
 app.use('/', userRouter);
 
 // Create server
